@@ -25,7 +25,7 @@ This collection should be a property of the main model that they belong to:
 For example:
 
     var SomeModel = Backbone.Model.extend({
-
+      ...
       initialize: function(){
         this.associatedModels = new SomeAssociatedCollection( this.get('associated_models') )
       }
@@ -39,7 +39,7 @@ the deleted models for persistence, this will happen automatically when you save
 This isn't specific to this Collection, but the recommended way of persisting your associations would be something like:
 
     var SomeModel = Backbone.Model.extend({
-
+      ...
       toJSON: function(){
         var attrs = _.clone(this.attributes);
 
@@ -48,7 +48,6 @@ This isn't specific to this Collection, but the recommended way of persisting yo
           delete attrs['associated_models'] // in case they came in from initial serialization
         }
         return attrs;
-
       }
     });
 
