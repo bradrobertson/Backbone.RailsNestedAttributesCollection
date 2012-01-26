@@ -31,8 +31,8 @@ For example:
       }
     });
 
-Now when you add and delete from this collection, you don't need to worry about persisting
-the deleted models, this will happen automatically when you save
+Now when you add and delete from this collection, you don't need to worry tracking
+the deleted models for persistence, this will happen automatically when you save
 
 #### Serializing your model
 
@@ -51,3 +51,14 @@ This isn't specific to this Collection, but the recommended way of persisting yo
 
       }
     });
+
+### Enabling nested_attributes on your server
+
+    class SomeModel < ActiveRecord::Base
+      has_many :associated_models
+      accepts_nested_attributes_for :associated_models, :allow_destroy => true
+    end
+
+    class AssociatedModel < ActiveRecord::Base
+      belongs_to :some_model    # not required
+    end
