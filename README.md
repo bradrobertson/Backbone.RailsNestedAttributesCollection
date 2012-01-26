@@ -34,7 +34,7 @@ For example:
 Now when you add and delete from this collection, you don't need to worry tracking
 the deleted models for persistence, this will happen automatically when you save
 
-#### Serializing your model
+### Serializing your model
 
 This isn't specific to this Collection, but the recommended way of persisting your associations would be something like:
 
