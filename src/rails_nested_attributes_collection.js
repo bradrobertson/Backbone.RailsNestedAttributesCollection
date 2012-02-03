@@ -26,7 +26,7 @@
     initialize: function(){
       _.bindAll(this, "_addDeleted");
 
-      this.parent.bind("remove", this._addDeleted);
+      this.parent.on("remove", this._addDeleted);
     },
 
     /**
@@ -39,7 +39,7 @@
     */
     _addDeleted: function(model){
       if( !model.isNew() ){
-        model.set({"_destroy": true});
+        model.set("_destroy", true);
         this.add(model);
       }
     }
@@ -59,7 +59,7 @@
       Backbone.Collection.prototype._reset.call(this);
 
       // remove bindings to our old deleted collection if it exists
-      if(this.deleted){ this.unbind("remove", this.deleted._addDeleted); }
+      if(this.deleted){ this.off("remove", this.deleted._addDeleted); }
 
       // Create a new collection with a parent attribute set to this collection
       // to track deletions from this collection

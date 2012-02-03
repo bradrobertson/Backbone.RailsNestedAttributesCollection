@@ -9,6 +9,9 @@ track this deletion so you can tell Rails to delete the association server side.
 
 Using this collection will automatically track these removals and provide the appropriate serialization to persist
 their deletion on the server.
+## Dependencies
+
+  backbone.js > 0.9.0   *(for older versions, see git history)*
 
 ## Usage
 
